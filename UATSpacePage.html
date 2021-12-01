@@ -1,0 +1,156 @@
+<!--Marissa Walsh-->
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script src="code.js"></script>
+        <script src="class.js"></script>
+        <script src="dataLoader.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script>
+            //creating global variables for webpage
+            var theTime = new Date();
+            var tempTime = new Date();
+            var time_interval = 5000;
+            var last_iteration = 0;
+            var running = true;
+            var index = 0;
+            var timer;
+
+            //gets data into array
+            var data = getData();
+
+            //function to load and display data
+            function updateDisplay() {
+                console.log("Display time: " + theTime.getHours() + ":" 
+                + (theTime.getMinutes() < 10 ? "0" + theTime.getMinutes() : theTime.getMinutes()) + ":" 
+                + (theTime.getSeconds() < 10 ? "0" + theTime.getSeconds() : theTime.getSeconds()));
+                theTime = new Date;
+                var timeRead =data[index].time_seconds;
+
+                if(timeRead >= 10){
+                    document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elapsed", data[index].time_seconds, "seconds");
+                    document.getElementById("data").rows["latitude"].innerHTML = dataRow("Latitude", data[index].latitude, " ");
+                    document.getElementById("data").rows["longitude"].innerHTML = dataRow("Longitude", data[index].longitude, " ");
+                    document.getElementById("data").rows["gps_altitude"].innerHTML = dataRow("GPS Altitude", data[index].gps_altitude, " ");
+                    document.getElementById("data").rows["bmpSensor_Altitude"].innerHTML = dataRow("BMP Sensor Altitude", data[index].bmpSensor_altitude, " ");
+                    document.getElementById("data").rows["bmpSensor_pressure"].innerHTML = dataRow("BMP Sensor Pressure", data[index].bmpSensor_pressure, " ");
+                    document.getElementById("data").rows["bmpSensor_temp"].innerHTML = dataRow("BMP Sensor Temperature", data[index].bmpSensor_temp, " ");
+                    document.getElementById("data").rows["digSensor_temp"].innerHTML = dataRow("Digital Sensor Temperature", data[index].digSensor_temp, " ");
+                    document.getElementById("data").rows["cssSensor_temp"].innerHTML = dataRow("CSS Sensor Temperature", data[index].cssSensor_temp, " ");
+                    document.getElementById("data").rows["cssSensor_eCO2"].innerHTML = dataRow("CSS Sensor eCO2", data[index].cssSensor_eCO2, " ");
+                    document.getElementById("data").rows["cssSensor_TVOC"].innerHTML = dataRow("CSS Sensor TVOC", data[index].cssSensor_TVOC, " ");
+                    document.getElementById("data").rows["UV"].innerHTML = dataRow("UV", data[index].UV, " ");
+                    document.getElementById("data").rows["accelX"].innerHTML = dataRow("Acceleration X", data[index].accelX, " ");
+                    document.getElementById("data").rows["accelY"].innerHTML = dataRow("Acceleration Y", data[index].accelY, " ");
+                    document.getElementById("data").rows["accelZ"].innerHTML = dataRow("Acceleration Z", data[index].accelZ, " ");
+                    document.getElementById("data").rows["magneticX"].innerHTML = dataRow("Magnetic X", data[index].magneticX, " ");
+                    document.getElementById("data").rows["magneticY"].innerHTML = dataRow("Magnetic Y", data[index].magneticY, " ");
+                    document.getElementById("data").rows["magneticZ"].innerHTML = dataRow("Magnetic Z", data[index].magneticZ, " ");
+                    document.getElementById("data").rows["gyroX"].innerHTML = dataRow("Gyroscopic X", data[index].gyroX, " ");
+                    document.getElementById("data").rows["gyroY"].innerHTML = dataRow("Gyroscopic Y", data[index].gyroY, " ");
+                    document.getElementById("data").rows["gyroZ"].innerHTML = dataRow("Gyroscopic Z", data[index].gyroZ, " ");
+                    document.getElementById("clockTime").innerHTML = "Display time: " + theTime.getHours() + ":" 
+                + (theTime.getMinutes() < 10 ? "0" + theTime.getMinutes() : theTime.getMinutes()) + ":" 
+                + (theTime.getSeconds() < 10 ? "0" + theTime.getSeconds() : theTime.getSeconds());
+                    if (index < 500){
+                        index++
+                    } else {
+                        index = 0;
+                    }
+                }
+            }
+        </script>
+        <title>
+            Marissa Walsh's CSC102 page
+        </title>
+        <script>
+            //alert("This is a test of the alert function.");
+        </script>
+        <html>
+            
+            
+            <h1>This is a heading</h1>
+            <p>This is a paragraph.</p>
+            
+            </body>
+            </html>
+            
+    </head>
+
+    <body>
+        <table>
+            <td><img srC="UATspaceLogo-1.jpg"></td>
+            <td><h1>UAT Space Program</h1></td>
+        </table>
+        <table id="data" width="70%" border="2">
+            <thead>
+                <th>Data Type</th>
+                <th>Reading</th>
+            </thead>
+            <tbody>
+                <tr id="seconds"></tr>
+                <tr id="latitude"></tr>
+                <tr id="longitude"></tr>
+                <tr id="gps_altitude"></tr>
+                <tr id="bmpSensor_Altitude"></tr>
+                <tr id="bmpSensor_pressure"></tr>
+                <tr id="bmpSensor_temp"></tr>
+                <tr id="digSensor_temp"></tr>
+                <tr id="cssSensor_temp"></tr>
+                <tr id="cssSensor_eCO2"></tr>
+                <tr id="cssSensor_TVOC"></tr>
+                <tr id="UV"></tr>
+                <tr id="accelX"></tr>
+                <tr id="accelY"></tr>
+                <tr id="accelZ"></tr>
+                <tr id="magneticX"></tr>
+                <tr id="magneticY"></tr>
+                <tr id="magneticZ"></tr>
+                <tr id="gyroX"></tr>
+                <tr id="gyroY"></tr>
+                <tr id="gyroZ"></tr>
+            </tbody>
+
+        </table>
+        <p id="clockTime">Display time when running</p>
+        <br>
+        <script>
+            document.write("This is a test of the document.write function.");
+        </script>
+        <p>
+            This is a test of the paragraph tags.
+        </p> <br>
+
+        <button id="startButton" class="button" onclick="start();">Start</button>
+        <button id="stopButton" class="button" onclick="stop();">Stop</button> <br>
+        <br>
+        <p id ="countDownTimer">Waiting to start</p>
+        <br>
+        <br>
+        <button onclick="playCraps();">Play Craps!</button>
+        <p id="die1Res">Die 1...</p>
+        <p id="die2Res">Die 2...</p>
+        <p id="sum1Res">Sum...</p>
+        <p id="finalRes">Win, lose, or draw...</p>
+        <br>
+        <br>
+        <script>
+            var fallLaunch = new Mission(75, 100, 25, "Fiona", 31, "October", 2021, 5);
+            var springLaunch = new Mission(25, 50, 5, "Polaris", 12, "April", 2022, 3);
+
+        </script>
+        <button class="button" onclick="launchFall();">Launch Fall Mission</button>
+        <button class="button" onclick="displayFall();">Display Fall Mission</button><br>
+        <button class="lgButton" onclick="launchSpring();">Launch Spring Mission</button>
+        <button class="lgButton" onclick="displaySpring();">Display Spring Mission</button>
+        <br>
+        <button class="lgButton" onclick="playStation();">Play SpaceStation Sounds</button><br>
+        <button class="lgButton" onclick="playBowie();">Play David Bowie</button><br>
+        <br>
+        <br>
+        <button class="lgButton" onclick="goIndex();">Goto Landing Page</button>
+        <button class="lgButton" onclick="goBoards();">Goto Boards Page</button>
+
+    </body>
+</html>
