@@ -9,7 +9,7 @@ function checkCreds(){
     if(fullName.length > 20 || fullName.length < 2){
         document.getElementById("loginStatus").innerHTML = 
             "Invalid full name! Please try again...";
-    } else if(badgeNumb>999 || badgeNumb<0){
+    } else if(badgeNumb>999 || badgeNumb<1){
         document.getElementById("loginStatus").innerHTML =
             "Invalid badge number! Please try again...";
     } else {

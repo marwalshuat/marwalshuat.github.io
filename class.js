@@ -92,7 +92,7 @@ function displayFall(){
 }
 
 function launchSpring(){
-    console.logI("launchSpring() started");
+    console.log("launchSpring() started");
     springLaunch.launch();
 }
 
